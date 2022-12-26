@@ -7,49 +7,18 @@
 
 <body>
 
-    <script>
+    <script type="module">
+        import { PlayScene } from "./scripts/PlayScene.js"
+
         var config = {
             type: Phaser.AUTO,
             width: 480,
             height: 360,
-            physics: {
-                default: 'arcade',
-                arcade: {
-                    gravity: { y: 200 }
-                }
-            },
-            scene: {
-                preload: preload,
-                create: create,
-                update: update,
-            }
+            scene: [PlayScene]
         };
 
         var game = new Phaser.Game(config);
-        var graphics;
-
-        function preload() {
-            this.load.setBaseURL('http://labs.phaser.io');
-
-            this.load.image('sky', 'assets/skies/space3.png');
-            this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-            this.load.image('red', 'assets/particles/red.png');
-        }
-
-        function create() {
-            graphics = this.add.graphics(0, 0);
-
-
-        }
-
-        function update() {
-            graphics.clear();
-
-            graphics.fillStyle(0xFFFFFF, 1.0);
-            graphics.fillRect(50, 50, 400, 200);
-        }
     </script>
-
 </body>
 
 </html>
