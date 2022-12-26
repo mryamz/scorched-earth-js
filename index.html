@@ -20,11 +20,13 @@
             },
             scene: {
                 preload: preload,
-                create: create
+                create: create,
+                update: update,
             }
         };
 
         var game = new Phaser.Game(config);
+        var graphics;
 
         function preload() {
             this.load.setBaseURL('http://labs.phaser.io');
@@ -35,23 +37,16 @@
         }
 
         function create() {
-            this.add.image(400, 300, 'sky');
+            graphics = this.add.graphics(0, 0);
 
-            var particles = this.add.particles('red');
 
-            var emitter = particles.createEmitter({
-                speed: 100,
-                scale: { start: 1, end: 0 },
-                blendMode: 'ADD'
-            });
+        }
 
-            var logo = this.physics.add.image(400, 100, 'logo');
+        function update() {
+            graphics.clear();
 
-            logo.setVelocity(100, 200);
-            logo.setBounce(1, 1);
-            logo.setCollideWorldBounds(true);
-
-            emitter.startFollow(logo);
+            graphics.fillStyle(0xFFFFFF, 1.0);
+            graphics.fillRect(50, 50, 400, 200);
         }
     </script>
 
